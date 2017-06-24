@@ -1,0 +1,8 @@
+## Interface: 20000
+## Title: NBR - NirkBuffRemover
+## Notes: Removes the least useful buffs following profile priority lists when getting close to the 32 buff limit
+## Author: Nirklars
+## Version: 2
+## SavedVariables: NBR_Options, NBR_Profile
+NBR_Frame.xml
+NBR.lua

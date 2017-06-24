@@ -1,0 +1,58 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+..\..\FrameXML\UI.xsd">
+  
+  <Script file="NBR.lua"/>
+  
+<Frame name="NBR_UpdateFrame" toplevel="true" parent="UIParent" hidden="true">
+	<Scripts>
+	  	<OnLoad>
+			NBR_OnLoad();
+		</OnLoad>
+		<OnUpdate>
+			NBR_OnUpdate(arg1);
+		</OnUpdate>
+		<OnEvent>
+			NBR_OnEvent(arg1);
+		</OnEvent>
+	</Scripts>
+</Frame>
+  
+  
+  <!-- ================================================
+       MINIMAP BUTTON
+       =================================================-->
+  <Button name="NBR_MinimapButton" hidden="false" enableMouse="true" movable="true" parent="Minimap" toplevel="true">
+    <Size>
+      <AbsDimension x="32" y="32"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER">
+        <Offset>
+          <AbsDimension x="-80" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="Interface\Addons\NirkBuffRemover\Textures\MinimapButton"/>
+    <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+    <Scripts>
+      <OnLoad>
+        this:RegisterForDrag("LeftButton");
+        NBR_MinimapDropDown_OnLoad();
+      </OnLoad>
+      <OnDragStart>
+        NBR_MinimapButton_DragStart();
+      </OnDragStart>
+      <OnDragStop>
+        NBR_MinimapButton_DragEnd();
+      </OnDragStop>
+      <OnMouseDown>
+        NBR_MinimapButton_MouseDown();
+      </OnMouseDown>
+      <OnMouseUp>
+        --WebDKP_ToggleGUI();
+        PlaySound("igMainMenuOptionCheckBoxOn");
+        ToggleDropDownMenu(nil, nil, this);
+      </OnMouseUp>
+    </Scripts>
+  </Button>
+</Ui>
