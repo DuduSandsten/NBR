@@ -1,8 +1,9 @@
-NirkBuffRemover - NBR
+#NirkBuffRemover - NBR#
 WIP - Work in progress
 Removes the least useful buffs following profile priority lists when getting close to the 32 buff limit
+![Screenshot of NBR](https://github.com/DuduSandsten/NBR/screenshot.png)
 
-Change Log
+##Change Log##
 
 2017-06-26
 First release 
