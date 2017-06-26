@@ -32,7 +32,7 @@
         </Offset>
       </Anchor>
     </Anchors>
-    <NormalTexture file="Interface\Addons\NirkBuffRemover\Textures\MinimapButton"/>
+    <NormalTexture file="Interface\Addons\NBR\Textures\MinimapButton"/>
     <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
     <Scripts>
       <OnLoad>

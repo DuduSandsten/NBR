@@ -1,6 +1,6 @@
-NBRVersion = "Version 2017-06-24"
+NBRVersion = "Version 2017-06-26"
 NBR_IS_LOADED = false
-CurrentBuffs = {}
+NBR_CurrentNumBuffs = 0
 
 -- ================================
 -- Invoked when we recieve one of the requested events. 
@@ -17,26 +17,461 @@ function NBR_OnEvent()
 	end
 end
 
+function NBR_SetProfileAggressive()
+	local name = "Aggressive"
+	NBR_CurrentProfileName = name
+	NBR_Print("Current profile set to: "..name)
+	NBR_CurrentProfile = {
+		"Rallying Cry of the Dragonslayer",
+		"Spirit of Zandalar",
+		"Sayge's Dark Fortune of Damage",
+		"Warchief's Blessing",
+		"Songflower Serenade",
+		"Battle shout",
+		"Blood Fury",
+		"Fengus' Ferocity",
+		"Recklessness",
+		"Diamond Flask",
+		"Arcane Shroud",
+		"Holy Strength",
+		"Bonereaver's Edge",
+		"Trueshot Aura",
+		"Enrage",
+		"Battle Squawk",
+		"Traces of Silithyst",
+		"Elixir of the Mongoose",
+		"Flurry",
+		"Mighty Rage",
+		"Juju Power",
+		"Fire Festival Fury",
+		"R.O.I.D.S.",
+		"Fire-toasted Bun",
+		"Smoked Desert Dumplings",
+		"Juju Might",
+		"Juju Flurry",
+		"Mark of the Wild",
+		"Strike of the Scorpok",
+		"Berserker Rage",
+		"Mol'dar's Moxie",
+		"Spirit of Zanza",
+		"Power Word: Fortitude",
+		"Greater Nature Protection Potion",
+		"Greater Shadow Protection Potion",
+		"Renew",
+		"Ancestral Fortitude",
+		"Inspiration",
+		"Furious Howl",
+		"Rejuvenation",
+		"Prayer of Shadow Protection",
+		"Power Word: Shield",
+		"Regrowth",
+		"Abolish Poison",
+		"Abolish Disease",
+		"Healing Way",
+		"Water Breathing",
+		"Blood Rage",
+		"Bloodthirst",
+		"Thorns",
+		"Water Walking",
+		"Lightning Shield",
+		"Arcane Brilliance",
+		"Dampen Magic",
+		"Amplify Magic",
+		"Prayer of Spirit",
+		"Fire Shield",
+		"Detect Invisibility",
+		"Detect Greater Invisibility",
+		"Detect Lesser Invisibility"
+	}
+end
+
+function NBR_SetProfileDefault()
+	local name = "Default"
+	NBR_CurrentProfileName = name
+	NBR_Print("Current profile set to: "..name)
+	NBR_CurrentProfile = {
+		"Rallying Cry of the Dragonslayer",
+		"Spirit of Zandalar",
+		"Sayge's Dark Fortune of Damage",
+		"Warchief's Blessing",
+		"Songflower Serenade",
+		"Battle shout",
+		"Blood Fury",
+		"Fengus' Ferocity",
+		"Recklessness",
+		"Diamond Flask",
+		"Arcane Shroud",
+		"Holy Strength",
+		"Bonereaver's Edge",
+		"Trueshot Aura",
+		"Enrage",
+		"Battle Squawk",
+		"Traces of Silithyst",
+		"Elixir of the Mongoose",
+		"Flurry",
+		"Mighty Rage",
+		"Juju Power",
+		"Fire Festival Fury",
+		"R.O.I.D.S.",
+		"Fire-toasted Bun",
+		"Smoked Desert Dumplings",
+		"Juju Might",
+		"Juju Flurry",
+		"Mark of the Wild",
+		"Strike of the Scorpok",
+		"Berserker Rage",
+		"Mol'dar's Moxie",
+		"Spirit of Zanza",
+		"Power Word: Fortitude",
+		"Greater Nature Protection Potion",
+		"Greater Shadow Protection Potion",
+		"Renew",
+		"Ancestral Fortitude",
+		"Inspiration",
+		"Furious Howl",
+		"Rejuvenation",
+		"Prayer of Shadow Protection",
+		"Power Word: Shield",
+		"Regrowth",
+		"Abolish Poison",
+		"Abolish Disease",
+		"Healing Way",
+		"Water Breathing",
+		"Blood Rage",
+		"Bloodthirst",
+		"Thorns",
+		"Water Walking",
+		"Lightning Shield",
+		"Arcane Brilliance",
+		"Dampen Magic",
+		"Amplify Magic",
+		"Prayer of Spirit",
+		"Fire Shield",
+		"Detect Invisibility",
+		"Detect Greater Invisibility",
+		"Detect Lesser Invisibility"
+	}
+end
+
+function NBR_SetProfileLeeroy()
+	local name = "Leeroy"
+	NBR_CurrentProfileName = name
+	NBR_Print("Current profile set to: "..name)
+	NBR_CurrentProfile = {
+		"Rallying Cry of the Dragonslayer",
+		"Spirit of Zandalar",
+		"Sayge's Dark Fortune of Damage",
+		"Warchief's Blessing",
+		"Songflower Serenade",
+		"Battle shout",
+		"Blood Fury",
+		"Fengus' Ferocity",
+		"Recklessness",
+		"Diamond Flask",
+		"Arcane Shroud",
+		"Holy Strength",
+		"Bonereaver's Edge",
+		"Trueshot Aura",
+		"Enrage",
+		"Battle Squawk",
+		"Traces of Silithyst",
+		"Elixir of the Mongoose",
+		"Flurry",
+		"Mighty Rage",
+		"Juju Power",
+		"Fire Festival Fury",
+		"R.O.I.D.S.",
+		"Fire-toasted Bun",
+		"Smoked Desert Dumplings",
+		"Juju Might",
+		"Juju Flurry",
+		"Mark of the Wild",
+		"Strike of the Scorpok",
+		"Berserker Rage",
+		"Mol'dar's Moxie",
+		"Spirit of Zanza",
+		"Power Word: Fortitude",
+		"Greater Nature Protection Potion",
+		"Greater Shadow Protection Potion",
+		"Renew",
+		"Ancestral Fortitude",
+		"Inspiration",
+		"Furious Howl",
+		"Rejuvenation",
+		"Prayer of Shadow Protection",
+		"Power Word: Shield",
+		"Regrowth",
+		"Abolish Poison",
+		"Abolish Disease",
+		"Healing Way",
+		"Water Breathing",
+		"Blood Rage",
+		"Bloodthirst",
+		"Thorns",
+		"Water Walking",
+		"Lightning Shield",
+		"Arcane Brilliance",
+		"Dampen Magic",
+		"Amplify Magic",
+		"Prayer of Spirit",
+		"Fire Shield",
+		"Detect Invisibility",
+		"Detect Greater Invisibility",
+		"Detect Lesser Invisibility"
+	}
+end
+
+function NBR_SetProfileResistance()
+	local name = "Resistance"
+	NBR_CurrentProfileName = name
+	NBR_Print("Current profile set to: "..name)
+	NBR_CurrentProfile = {
+		"Rallying Cry of the Dragonslayer",
+		"Spirit of Zandalar",
+		"Sayge's Dark Fortune of Damage",
+		"Warchief's Blessing",
+		"Songflower Serenade",
+		"Battle shout",
+		"Blood Fury",
+		"Fengus' Ferocity",
+		"Recklessness",
+		"Diamond Flask",
+		"Arcane Shroud",
+		"Holy Strength",
+		"Bonereaver's Edge",
+		"Trueshot Aura",
+		"Enrage",
+		"Battle Squawk",
+		"Traces of Silithyst",
+		"Elixir of the Mongoose",
+		"Flurry",
+		"Mighty Rage",
+		"Juju Power",
+		"Fire Festival Fury",
+		"R.O.I.D.S.",
+		"Fire-toasted Bun",
+		"Smoked Desert Dumplings",
+		"Juju Might",
+		"Juju Flurry",
+		"Mark of the Wild",
+		"Strike of the Scorpok",
+		"Berserker Rage",
+		"Mol'dar's Moxie",
+		"Spirit of Zanza",
+		"Power Word: Fortitude",
+		"Greater Nature Protection Potion",
+		"Greater Shadow Protection Potion",
+		"Renew",
+		"Ancestral Fortitude",
+		"Inspiration",
+		"Furious Howl",
+		"Rejuvenation",
+		"Prayer of Shadow Protection",
+		"Power Word: Shield",
+		"Regrowth",
+		"Abolish Poison",
+		"Abolish Disease",
+		"Healing Way",
+		"Water Breathing",
+		"Blood Rage",
+		"Bloodthirst",
+		"Thorns",
+		"Water Walking",
+		"Lightning Shield",
+		"Arcane Brilliance",
+		"Dampen Magic",
+		"Amplify Magic",
+		"Prayer of Spirit",
+		"Fire Shield",
+		"Detect Invisibility",
+		"Detect Greater Invisibility",
+		"Detect Lesser Invisibility"
+	}
+end
+
+function NBR_SetProfileSurvivalist()
+	local name = "Survivalist"
+	NBR_CurrentProfileName = name
+	NBR_Print("Current profile set to: "..name)
+	NBR_CurrentProfile = {
+		"Rallying Cry of the Dragonslayer",
+		"Spirit of Zandalar",
+		"Sayge's Dark Fortune of Damage",
+		"Warchief's Blessing",
+		"Songflower Serenade",
+		"Battle shout",
+		"Blood Fury",
+		"Fengus' Ferocity",
+		"Recklessness",
+		"Diamond Flask",
+		"Arcane Shroud",
+		"Holy Strength",
+		"Bonereaver's Edge",
+		"Trueshot Aura",
+		"Enrage",
+		"Battle Squawk",
+		"Traces of Silithyst",
+		"Elixir of the Mongoose",
+		"Flurry",
+		"Mighty Rage",
+		"Juju Power",
+		"Fire Festival Fury",
+		"R.O.I.D.S.",
+		"Fire-toasted Bun",
+		"Smoked Desert Dumplings",
+		"Juju Might",
+		"Juju Flurry",
+		"Mark of the Wild",
+		"Strike of the Scorpok",
+		"Berserker Rage",
+		"Mol'dar's Moxie",
+		"Spirit of Zanza",
+		"Power Word: Fortitude",
+		"Greater Nature Protection Potion",
+		"Greater Shadow Protection Potion",
+		"Renew",
+		"Ancestral Fortitude",
+		"Inspiration",
+		"Furious Howl",
+		"Rejuvenation",
+		"Prayer of Shadow Protection",
+		"Power Word: Shield",
+		"Regrowth",
+		"Abolish Poison",
+		"Abolish Disease",
+		"Healing Way",
+		"Water Breathing",
+		"Blood Rage",
+		"Bloodthirst",
+		"Thorns",
+		"Water Walking",
+		"Lightning Shield",
+		"Arcane Brilliance",
+		"Dampen Magic",
+		"Amplify Magic",
+		"Prayer of Spirit",
+		"Fire Shield",
+		"Detect Invisibility",
+		"Detect Greater Invisibility",
+		"Detect Lesser Invisibility"
+	}
+end
+
+
+--not implemented yet
+function NBR_AutoSwapProfiles()
+	if(NBR_Options["NBR_AutoSwapProfiles"] == 1) then
+		NBR_Print("NBR Profile autoswapping: Disabled")
+		NBR_Options["NBR_AutoSwapProfiles"] = 0
+	else
+		NBR_Print("NBR Profile autoswapping: Enabled")
+		NBR_Options["NBR_AutoSwapProfiles"] = 1
+	end
+end
+
+function NBRLoadProfile()
+	if(NBR_CurrentProfile == nil) then
+		NBR_CurrentProfile = NBR_ProfileDefault
+	end
+	if(NBR_CurrentProfileName == nil) then
+		NBR_CurrentProfileName = "Default"
+	end
+end
+
+function NBR_ToggleNotifications()
+	if(NBR_Options["Notifications"] == true) then
+		NBR_Options["Notifications"] = false
+		NBR_Print("NBR Notifications: Disabled")
+	else
+		NBR_Options["Notifications"] = true
+		NBR_Print("NBR Notifications: Enabled")
+	end
+end
+
 function AuraLog()
-	NBR_Print("Aura event fired! Difference since last check:")
+	if NBR_Options["Enabled"] == 0 then
+		return
+	end
+	
+	--NBR_Print("Aura event fired! Difference since last check:")
 	
 	
 	--Move last buff list to previous in order to log changes
 	NBR_PreviousBuffs = NBR_CurrentBuffs
 	NBR_CurrentBuffs = {}
+	NBR_CurrentNumBuffs = 0
 	
-	for i=1,32 do
-		local buff=UnitBuff("player",i)
-		if buff then 
-			NBR_CurrentBuffs[i] = buff
+	
+	--retrieve proper buff names from player via tooltip example
+	--[[
+	GameTooltip:SetOwner(WorldFrame) 
+	for i=1,32 do 
+		GameTooltip:SetPlayerBuff(i) 
+		if GameTooltipTextLeft1:GetText() then 
+			DEFAULT_CHAT_FRAME:AddMessage(i.."="..GameTooltipTextLeft1:GetText(),0.4,1,1) 
+		end 
+	end
+	--]]
+	
+	--retrieve proper buff names and count buffs and store store each buff slotID in a table
+	GameTooltip:SetOwner(WorldFrame) 
+	for i=0,32 do
+		GameTooltip:SetPlayerBuff(i) 
+		if GameTooltipTextLeft1:GetText() then 
+			GameTooltip:SetPlayerBuff(i) 
+			NBR_CurrentBuffs[i] = GameTooltipTextLeft1:GetText()
+			NBR_CurrentNumBuffs = NBR_CurrentNumBuffs + 1
 		else
 			break
 		end 
 	end
 	
-	NBR_DifferentBuffs = TableComp(NBR_CurrentBuffs,NBR_PreviousBuffs)
+	--BACKWARDS
+	--/run for i=33,1,-1 do Print(NBR_Profile[i]) end
+	
+	--check if got too many buffs
+	local breakout = false
+	if NBR_CurrentNumBuffs > NBR_Options["Threshold"]+1-1 then
+		for j=getn(NBR_CurrentProfile),1,-1 do
+			for i=1,getn(NBR_CurrentBuffs) do
+				--NBR_Print("Looping through i: "..i.." and "..j)
+				if NBR_CurrentBuffs[i] == NBR_CurrentProfile[j] then
+					if NBR_Options["Notifications"] == true then
+						NBR_Print("NBR canceled buff: "..NBR_CurrentBuffs[i])
+					end
+					CancelPlayerBuff(i)
+					breakout = true
+					break
+				end
+			end
+			if breakout then 
+				break
+			end
+		end
+	end
 	
 	
+	
+	
+	
+	--[[
+	GameTooltip:SetOwner(WorldFrame) 
+	for i=1,32 do
+		local buff=UnitBuff("player",i)
+		if buff then 
+			GameTooltip:SetPlayerBuff(i) 
+			NBR_CurrentBuffs[i] = GameTooltipTextLeft1:GetText()
+			NBR_CurrentNumBuffs = NBR_CurrentNumBuffs + 1
+		else
+			break
+		end 
+	end
+	--]]
+	
+	--Compare difference testing (not really needed but trying to learn)
+	--NBR_DifferentBuffs = TableComp(NBR_CurrentBuffs,NBR_PreviousBuffs)
+	
+	--[[
 	-- check for gained buffs
 	if(NBR_DifferentBuffs == nil) then
 		NBR_DifferentBuffs = {}
@@ -49,34 +484,22 @@ function AuraLog()
 	end
 	
 	
-
+	--]]
 
 	
 	
 	--Print current buffs
-	--for i=1,getn(NBR_CurrentBuffs) do
-	--	NBR_Print(i.. "="..NBR_CurrentBuffs[i])
-	--end
-	
+
 	
 	
 	--list current buffs
-	--[[
-	for i=1,32 do
-		local abrus,bofus=UnitBuff("player",i)
-		if abrus then 
-			NBR_Print(i.."="..abrus.." "..bofus) 
-		end 
-	end
-	--]]
+
 	--compare current buffs to last buffs
 	
 	
 	
 	
 	--log change in current buffs
-	
-	
 	
 	--
 end
@@ -135,23 +558,6 @@ end
 
 
 
-function TableComp2(a,b) --algorithm is O(n log n), due to table growth.
-    if getn(a) ~= getn(b) then return false end -- early out
-    local t1,t2 = {}, {} -- temp tables
-    for k,v in pairs(a) do -- copy all values into keys for constant time lookups
-        t1[k] = (t1[k] or 0) + 1 -- make sure we track how many times we see each value.
-    end
-    for k,v in pairs(b) do
-        t2[k] = (t2[k] or 0) + 1
-    end
-    for k,v in pairs(t1) do -- go over every element
-        if v ~= t2[k] then return false end -- if the number of times that element was seen don't match...
-    end
-    return true
-end
-
-
-
 --Load values once the addon is loaded
 function NBR_ADDON_LOADED()
 	if(NBR_Options == nil) then
@@ -165,16 +571,22 @@ function NBR_ADDON_LOADED()
 	if(NBR_CurrentBuffs == nil) then
 		NBR_CurrentBuffs = {}
 	end
-	
+	if(NBR_Options["Threshold"] == nil) then
+		NBR_Options["Threshold"] = 30
+	end
+	if(NBR_Options["Notifications"] == nil) then
+		NBR_Options["Notifications"] = true
+	end
 	
 	if(NBR_Options["Enabled"] == nil) then
 		NBR_Options["Enabled"] = 1
+		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton")
 	elseif (NBR_Options["Enabled"] == 0) then
-		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NirkBuffRemover\\\Textures\\MinimapButton_disabled")
+		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton_disabled")
 	end
 	
-	if(NBR_Options["AutoSwapTarget"] == nil) then
-		NBR_Options["AutoSwapTarget"] = 1
+	if(NBR_Options["NBR_AutoSwapProfiles"] == nil) then
+		NBR_Options["NBR_AutoSwapProfiles"] = 1
 	end
 	
 	if(NBR_Options["HealingPriority"] == nil) then
@@ -187,6 +599,7 @@ function NBR_ADDON_LOADED()
 	
 	NBR_Print("NBR loaded - "..NBRVersion)
 	NBR_MinimapButton_SetPositionAngle(NBR_Options["MiniMapButtonAngle"])
+	NBRLoadProfile()
 	NBR_IS_LOADED = true
 end
 
@@ -206,23 +619,52 @@ end
 -- Adds buttons to the minimap drop down
 function NBR_MinimapDropDown_Initialize()
 	NBR_Add_MinimapDropDownItem("Toggle: Enable/Disable",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Option: Auto swap profile from target",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Profile: Leeroy Jenkins",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Profile: Agressive",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Profile: Default",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Profile: Resistance Potions",NBR_ToggleEnabled)
-	NBR_Add_MinimapDropDownItem("Profile: Survivalist",NBR_ToggleEnabled)
+	NBR_Add_MinimapDropDownItem("Option: Set Threshold for auto removal",NBR_SetThreshold)
+	NBR_Add_MinimapDropDownItem("Option: Toggle notifications",NBR_ToggleNotifications)
+	--NBR_Add_MinimapDropDownItem("Option: Auto swap profile from target",NBR_AutoSwapProfiles())
+	NBR_Add_MinimapDropDownItem("Profile: Leeroy Jenkins",NBR_SetProfileLeeroy)
+	NBR_Add_MinimapDropDownItem("Profile: Aggressive",NBR_SetProfileAggressive)
+	NBR_Add_MinimapDropDownItem("Profile: Default",NBR_SetProfileDefault)
+	NBR_Add_MinimapDropDownItem("Profile: Resistance Potions",NBR_SetProfileResistance)
+	NBR_Add_MinimapDropDownItem("Profile: Survivalist",NBR_SetProfileSurvivalist)
+end
+
+function NBR_SetThreshold()
+	StaticPopupDialogs["NBR_SET_THRESHOLD_PROMPT"] = {
+		text = "Please select the Threshold for when buffs should start being removed. (Default is 30) \n\nTheoretically 31 Should be enough but some auras count as buffs depending on the server. For example Warrior stances counts as invisible buffs on Kronos.",
+	  	button1 = "Confirm",
+	  	button2 = "Cancel",
+		
+		OnShow = function()
+			getglobal(this:GetName().."EditBox"):SetFocus()
+			getglobal(this:GetName().."EditBox"):SetText("30")
+			getglobal(this:GetName().."EditBox"):HighlightText()
+		end,
+		
+	  	OnAccept = function()
+			local text = getglobal(this:GetParent():GetName().."EditBox"):GetText()
+			if text ~= "" then
+				NBR_Options["Threshold"] = text
+			end
+	  	end,
+	  	timeout = 0,
+	  	hasEditBox = true,
+	  	whileDead = true,
+	  	hideOnEscape = true,
+	  	preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
+	}
+	StaticPopup_Show ("NBR_SET_THRESHOLD_PROMPT")
 end
 
 function NBR_ToggleEnabled()
 	if(NBR_Options["Enabled"] == 1) then
 		NBR_Options["Enabled"] = 0
 		NBR_Print("BuffRemover is now disabled.")
-		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NirkBuffRemover\\\Textures\\MinimapButton_disabled")
+		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton_disabled")
 	else
 		NBR_Options["Enabled"] = 1
 		NBR_Print("BuffRemover is now enabled.")
-		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NirkBuffRemover\\\Textures\\MinimapButton")
+		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton")
 	end
 end
 
@@ -325,9 +767,15 @@ function NBR_MinimapButton_SetPositionAngle(pAngle)
 		GameTooltip:SetText("NBR - Nirklars Buff Remover");
 		GameTooltip:AddLine(NBRVersion,1,1,1);
 		if(NBR_Options["Enabled"] == 1) then
-			GameTooltip:AddLine("NBR is Enabled",0,1,0);
+			GameTooltip:AddLine("NBR is Enabled",0,1,0)
+			GameTooltip:AddLine("Current Profile: "..NBR_CurrentProfileName,0,1,0)
+			GameTooltip:AddLine("Current removal Threshold: "..NBR_Options["Threshold"],1,0.55,0.55)
+			GameTooltip:AddLine("Current number of buffs: "..NBR_CurrentNumBuffs.."/32",1,1,1)
+			for i=0,NBR_CurrentNumBuffs do
+				GameTooltip:AddLine(NBR_CurrentBuffs[i],1,1,1)
+			end
 		else
-			GameTooltip:AddLine("NBR is Disabled",1,0,0);
+			GameTooltip:AddLine("NBR is Disabled",1,0,0)
 		end
 		GameTooltip:Show()
 	end)
