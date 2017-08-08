@@ -49,7 +49,6 @@
         NBR_MinimapButton_MouseDown();
       </OnMouseDown>
       <OnMouseUp>
-        --WebDKP_ToggleGUI();
         PlaySound("igMainMenuOptionCheckBoxOn");
         ToggleDropDownMenu(nil, nil, this);
       </OnMouseUp>

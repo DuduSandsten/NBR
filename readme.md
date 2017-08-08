@@ -7,6 +7,10 @@ Removes the least useful buffs following profile priority lists when getting clo
 
 ## Change Log
 
+2017-08-08
+Updated profiles Aggressive and Default courtesy of Cadux
+Added console commands for people who disable their minimap icons
+
 2017-06-26
 First release 
 

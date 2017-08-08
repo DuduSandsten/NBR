@@ -1,6 +1,51 @@
-NBRVersion = "Version 2017-06-26"
+NBRVersion = "Version 2017-08-08"
 NBR_IS_LOADED = false
 NBR_CurrentNumBuffs = 0
+
+--Slash commands
+SlashCmdList["SLASH_NBR"] = function(Flag) end
+
+--info
+SLASH_NBR1, SLASH_NBR2 = "/nbr", "/buffremover"
+function SlashCmdList.NBR(msg, editbox)
+	if tostring(msg) == "" then
+		NBRInfo()
+	elseif tostring(msg) == "on" or tostring(msg) == "enable" then
+		NBR_Enable()
+	elseif tostring(msg) == "off" or tostring(msg) == "disable" then
+		NBR_Disable()
+	elseif tostring(msg) == "cfg" or tostring(msg) == "config" or tostring(msg) == "opt" or tostring(msg) == "options" then
+		NBR_Print("<<NirklarsBuffRemover NBR commands>> nirklars.wordpress.com/wow")
+		NBR_Print("There is no config menu yet. Sorry! Click the minimap button for options or type /nbr to get a list of commands.")
+	elseif tostring(msg) == "thresh" or tostring(msg) == "threshold" or tostring(msg) == "count" then
+		NBR_SetThreshold()
+	elseif tostring(msg) == "leeroy" then
+		NBR_SetProfileLeeroy()
+	elseif tostring(msg) == "aggressive" then
+		NBR_SetProfileAggressive()
+	elseif tostring(msg) == "default" then
+		NBR_SetProfileDefault()
+	elseif tostring(msg) == "resistance" then
+		NBR_SetProfileResistance()
+	elseif tostring(msg) == "survival" then
+		NBR_SetProfileSurvivalist()
+	else
+		NBRInfo()
+	end
+end
+
+	function NBRInfo()
+		NBR_Print("<<NirklarsBuffRemover NBR commands>> nirklars.wordpress.com/wow")
+		NBR_Print("/nbr on/off/enable/disable - Toggle enabled disabled")
+		--NBR_Print("/nbr cfg/config/opt/options - Show config menu")
+		NBR_Print("/nbr thresh/threshold/count - Set buffcount before removing buffs")
+		NBR_Print("/nbr leeroy - Set profile to Leeroy Jenkins")
+		NBR_Print("/nbr aggressive - Set profile to Aggressive")
+		NBR_Print("/nbr default - Set profile to Default")
+		NBR_Print("/nbr resistance - Set profile to Resistance Potions")
+		NBR_Print("/nbr survival - Set profile to Survivalist")
+	end
+
 
 -- ================================
 -- Invoked when we recieve one of the requested events. 
@@ -27,61 +72,84 @@ function NBR_SetProfileAggressive()
 		"Sayge's Dark Fortune of Damage",
 		"Warchief's Blessing",
 		"Songflower Serenade",
-		"Battle shout",
-		"Blood Fury",
 		"Fengus' Ferocity",
-		"Recklessness",
-		"Diamond Flask",
-		"Arcane Shroud",
-		"Holy Strength",
-		"Bonereaver's Edge",
-		"Trueshot Aura",
-		"Enrage",
-		"Battle Squawk",
 		"Traces of Silithyst",
-		"Elixir of the Mongoose",
+		"Enrage",
+		"Arcane Shroud",
+		"Recklessness",
 		"Flurry",
-		"Mighty Rage",
-		"Juju Power",
 		"Fire Festival Fury",
-		"R.O.I.D.S.",
-		"Fire-toasted Bun",
-		"Smoked Desert Dumplings",
-		"Juju Might",
-		"Juju Flurry",
-		"Mark of the Wild",
-		"Strike of the Scorpok",
-		"Berserker Rage",
-		"Mol'dar's Moxie",
+		"Trueshot Aura",
+		"Bonereaver's Edge",
+		"Earthstrike",
+		"Insight of the Qiraji",
+		"Badge of the Swarmguard",
+		"Flask of the Titans",
 		"Spirit of Zanza",
+		"Fire-toasted Bun",
+		"Elixir of the Mongoose",
+		"Strike of the Scorpok",
+		"R.O.I.D.S.",
+		"Juju Power",
+		"Juju Might",
+		"Smoked Desert Dumplings",
+		"Diamond Flask",
+		"Holy Strength",
+		"Strength of Earth",
+		"Grace of Air",
+		"Fire Resistance",
+		"Frost Resistance",
+		"Nature Resistance",
+		"Stoneskin",
+		"Healing Stream",
+		"Mana Spring",
+		"Tranquil Air",
+		"Greater Blessing of Kings",
+		"Greater Blessing of Might",
+		"Greater Blessing of Salvation",
+		"Greater Blessing of Sanctuary",
+		"Blessing of Kings",
+		"Blessing of Might", 
+		"Blessing of Salvation",
+		"Greater Stoneshield",
+		"Blood Fury",
+		"Battle Shout",
+		"Heaven's Blessing",
+		"Furious Howl",
 		"Power Word: Fortitude",
+		"Mark of the Wild",
+		"Power Word: Shield",
+		"Healing Way",
+		"Ancestral Fortitude",
+		"Inspiration",
 		"Greater Nature Protection Potion",
 		"Greater Shadow Protection Potion",
 		"Renew",
-		"Ancestral Fortitude",
-		"Inspiration",
-		"Furious Howl",
-		"Rejuvenation",
-		"Prayer of Shadow Protection",
-		"Power Word: Shield",
 		"Regrowth",
+		"Rejuvenation",
+		"Flip Out",
+		"Battle Squawk",
+		"Berserker Rage",
+		"Blood Rage",
+		"Mighty Rage",
+		"Juju Flurry",
+		"Mol'dar's Moxie",
+		"Thorns",
+		"Bloodthirst",
 		"Abolish Poison",
 		"Abolish Disease",
-		"Healing Way",
 		"Water Breathing",
-		"Blood Rage",
-		"Bloodthirst",
-		"Thorns",
 		"Water Walking",
 		"Lightning Shield",
-		"Arcane Brilliance",
-		"Dampen Magic",
-		"Amplify Magic",
-		"Prayer of Spirit",
 		"Fire Shield",
 		"Detect Invisibility",
 		"Detect Greater Invisibility",
-		"Detect Lesser Invisibility"
+		"Detect Lesser Invisibility",
+		"Arcane Brilliance",
+		"Prayer of Spirit",
+		"Prayer of Shadow Protection",
+		"Dampen Magic",
+		"Amplify Magic",
 	}
 end
 
@@ -95,61 +163,84 @@ function NBR_SetProfileDefault()
 		"Sayge's Dark Fortune of Damage",
 		"Warchief's Blessing",
 		"Songflower Serenade",
-		"Battle shout",
-		"Blood Fury",
 		"Fengus' Ferocity",
-		"Recklessness",
-		"Diamond Flask",
-		"Arcane Shroud",
-		"Holy Strength",
-		"Bonereaver's Edge",
-		"Trueshot Aura",
-		"Enrage",
-		"Battle Squawk",
 		"Traces of Silithyst",
-		"Elixir of the Mongoose",
+		"Enrage",
+		"Arcane Shroud",
+		"Recklessness",
 		"Flurry",
-		"Mighty Rage",
-		"Juju Power",
 		"Fire Festival Fury",
-		"R.O.I.D.S.",
-		"Fire-toasted Bun",
-		"Smoked Desert Dumplings",
-		"Juju Might",
-		"Juju Flurry",
-		"Mark of the Wild",
-		"Strike of the Scorpok",
-		"Berserker Rage",
-		"Mol'dar's Moxie",
+		"Trueshot Aura",
+		"Bonereaver's Edge",
+		"Earthstrike",
+		"Insight of the Qiraji",
+		"Badge of the Swarmguard",
+		"Flask of the Titans",
 		"Spirit of Zanza",
+		"Fire-toasted Bun",
+		"Elixir of the Mongoose",
+		"Strike of the Scorpok",
+		"R.O.I.D.S.",
+		"Juju Power",
+		"Juju Might",
+		"Smoked Desert Dumplings",
+		"Diamond Flask",
+		"Holy Strength",
+		"Strength of Earth",
+		"Grace of Air",
+		"Fire Resistance",
+		"Frost Resistance",
+		"Nature Resistance",
+		"Stoneskin",
+		"Healing Stream",
+		"Mana Spring",
+		"Tranquil Air",
+		"Greater Blessing of Kings",
+		"Greater Blessing of Might",
+		"Greater Blessing of Salvation",
+		"Greater Blessing of Sanctuary",
+		"Blessing of Kings",
+		"Blessing of Might", 
+		"Blessing of Salvation",
+		"Greater Stoneshield",
+		"Blood Fury",
+		"Battle Shout",
+		"Heaven's Blessing",
+		"Furious Howl",
+		"Mol'dar's Moxie",
 		"Power Word: Fortitude",
+		"Mark of the Wild",
+		"Power Word: Shield",
+		"Healing Way",
+		"Ancestral Fortitude",
+		"Inspiration",
 		"Greater Nature Protection Potion",
 		"Greater Shadow Protection Potion",
 		"Renew",
-		"Ancestral Fortitude",
-		"Inspiration",
-		"Furious Howl",
-		"Rejuvenation",
-		"Prayer of Shadow Protection",
-		"Power Word: Shield",
 		"Regrowth",
+		"Rejuvenation",
+		"Flip Out",
+		"Battle Squawk",
+		"Berserker Rage",
+		"Blood Rage",
+		"Mighty Rage",
+		"Juju Flurry",
+		"Thorns",
+		"Bloodthirst",
 		"Abolish Poison",
 		"Abolish Disease",
-		"Healing Way",
 		"Water Breathing",
-		"Blood Rage",
-		"Bloodthirst",
-		"Thorns",
 		"Water Walking",
 		"Lightning Shield",
-		"Arcane Brilliance",
-		"Dampen Magic",
-		"Amplify Magic",
-		"Prayer of Spirit",
 		"Fire Shield",
 		"Detect Invisibility",
 		"Detect Greater Invisibility",
-		"Detect Lesser Invisibility"
+		"Detect Lesser Invisibility",
+		"Arcane Brilliance",
+		"Prayer of Spirit",
+		"Prayer of Shadow Protection",
+		"Dampen Magic",
+		"Amplify Magic",
 	}
 end
 
@@ -163,61 +254,84 @@ function NBR_SetProfileLeeroy()
 		"Sayge's Dark Fortune of Damage",
 		"Warchief's Blessing",
 		"Songflower Serenade",
-		"Battle shout",
-		"Blood Fury",
 		"Fengus' Ferocity",
-		"Recklessness",
-		"Diamond Flask",
-		"Arcane Shroud",
-		"Holy Strength",
-		"Bonereaver's Edge",
-		"Trueshot Aura",
-		"Enrage",
-		"Battle Squawk",
 		"Traces of Silithyst",
-		"Elixir of the Mongoose",
+		"Enrage",
+		"Arcane Shroud",
+		"Recklessness",
 		"Flurry",
-		"Mighty Rage",
-		"Juju Power",
 		"Fire Festival Fury",
-		"R.O.I.D.S.",
-		"Fire-toasted Bun",
-		"Smoked Desert Dumplings",
-		"Juju Might",
-		"Juju Flurry",
-		"Mark of the Wild",
-		"Strike of the Scorpok",
-		"Berserker Rage",
-		"Mol'dar's Moxie",
+		"Trueshot Aura",
+		"Bonereaver's Edge",
+		"Earthstrike",
+		"Insight of the Qiraji",
+		"Badge of the Swarmguard",
+		"Flask of the Titans",
 		"Spirit of Zanza",
+		"Fire-toasted Bun",
+		"Elixir of the Mongoose",
+		"Strike of the Scorpok",
+		"R.O.I.D.S.",
+		"Juju Power",
+		"Juju Might",
+		"Smoked Desert Dumplings",
+		"Diamond Flask",
+		"Holy Strength",
+		"Strength of Earth",
+		"Grace of Air",
+		"Fire Resistance",
+		"Frost Resistance",
+		"Nature Resistance",
+		"Stoneskin",
+		"Healing Stream",
+		"Mana Spring",
+		"Tranquil Air",
+		"Greater Blessing of Kings",
+		"Greater Blessing of Might",
+		"Greater Blessing of Salvation",
+		"Greater Blessing of Sanctuary",
+		"Blessing of Kings",
+		"Blessing of Might", 
+		"Blessing of Salvation",
+		"Greater Stoneshield",
+		"Blood Fury",
+		"Battle Shout",
+		"Heaven's Blessing",
+		"Furious Howl",
 		"Power Word: Fortitude",
+		"Mark of the Wild",
+		"Power Word: Shield",
+		"Healing Way",
+		"Ancestral Fortitude",
+		"Inspiration",
 		"Greater Nature Protection Potion",
 		"Greater Shadow Protection Potion",
 		"Renew",
-		"Ancestral Fortitude",
-		"Inspiration",
-		"Furious Howl",
-		"Rejuvenation",
-		"Prayer of Shadow Protection",
-		"Power Word: Shield",
 		"Regrowth",
+		"Rejuvenation",
+		"Flip Out",
+		"Battle Squawk",
+		"Berserker Rage",
+		"Blood Rage",
+		"Mighty Rage",
+		"Juju Flurry",
+		"Mol'dar's Moxie",
+		"Thorns",
+		"Bloodthirst",
 		"Abolish Poison",
 		"Abolish Disease",
-		"Healing Way",
 		"Water Breathing",
-		"Blood Rage",
-		"Bloodthirst",
-		"Thorns",
 		"Water Walking",
 		"Lightning Shield",
-		"Arcane Brilliance",
-		"Dampen Magic",
-		"Amplify Magic",
-		"Prayer of Spirit",
 		"Fire Shield",
 		"Detect Invisibility",
 		"Detect Greater Invisibility",
-		"Detect Lesser Invisibility"
+		"Detect Lesser Invisibility",
+		"Arcane Brilliance",
+		"Prayer of Spirit",
+		"Prayer of Shadow Protection",
+		"Dampen Magic",
+		"Amplify Magic",
 	}
 end
 
@@ -658,15 +772,23 @@ end
 
 function NBR_ToggleEnabled()
 	if(NBR_Options["Enabled"] == 1) then
+		NBR_Disable()
+	else
+		NBR_Enable()
+	end
+end
+
+	function NBR_Disable()
 		NBR_Options["Enabled"] = 0
 		NBR_Print("BuffRemover is now disabled.")
 		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton_disabled")
-	else
+	end
+
+	function NBR_Enable()
 		NBR_Options["Enabled"] = 1
 		NBR_Print("BuffRemover is now enabled.")
 		NBR_MinimapButton:SetNormalTexture("Interface\\AddOns\\NBR\\Textures\\MinimapButton")
 	end
-end
 
 function NBR_Print(toPrint)
 	DEFAULT_CHAT_FRAME:AddMessage(toPrint, 1, 1, 0);
@@ -715,8 +837,6 @@ function NBR_MinimapButton_UpdateDragPosition()
 	
 	local	vCursorDeltaX = vCursorX - NBR_MinimapButton.CursorStartX
 	local	vCursorDeltaY = vCursorY - NBR_MinimapButton.CursorStartY
-	
-	--
 	
 	local	vCenterX = NBR_MinimapButton.CenterStartX + vCursorDeltaX
 	local	vCenterY = NBR_MinimapButton.CenterStartY + vCursorDeltaY
