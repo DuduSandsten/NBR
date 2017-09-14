@@ -1,4 +1,4 @@
-NBRVersion = "Version 2017-08-08"
+NBRVersion = "Version 2017-09-14"
 NBR_IS_LOADED = false
 NBR_CurrentNumBuffs = 0
 
@@ -57,7 +57,7 @@ function NBR_OnEvent()
 		NBR_ADDON_LOADED()
 	--elseif(event=="UNIT_AURA") then
 	--	NBR_Print("aura event fired")
-	elseif(event=="PLAYER_AURAS_CHANGED") then
+	elseif(event=="PLAYER_AURAS_CHANGED") and NBR_IS_LOADED == true then
 		AuraLog()
 	end
 end
